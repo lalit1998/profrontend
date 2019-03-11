@@ -1,0 +1,18 @@
+
+<h3>HIGH RATED PRODUCT</h3>
+<div class="row" style="height: 200px; width: 700px;">
+  <div class="col-sm-6 col-md-4" *ngFor="let item of pro_arr;let i=index">
+    <div class="thumbnail">
+
+      <div class="caption">
+     <!-- <div *ngFor="let item of arr1;let i=index">
+       <img src="{{arr1[i]}}" alt="no image" height="100px" width="100px">
+       </div> -->
+       <img src="{{'http://localhost:3000/images/product/'+item.pro_img}}" alt="no image" height="100px" width="100px">
+       <p>{{item.pro_name}}</p>
+       <p>{{item.pro_price}}</p>
+        <button class="btn btn btn-primary" (click)="ondet(item)">DETAILS</button>
+        </div>
+    </div>
+  </div>
+</div>

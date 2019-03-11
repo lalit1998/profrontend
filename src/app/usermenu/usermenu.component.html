@@ -1,0 +1,238 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary" routerLink=""(click)="onclickmenu()">MENU</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="userhome"><td >
+      <td><b><h4 style="font-size: 14px;">Home</h4></b></td></a>
+      <a mat-list-item routerLink="viewprofile"><td>
+      <td><b><h4 style="font-size: 14px;">View Profile</h4></b></td></a>
+      <a mat-list-item routerLink="addrepair">
+        <td><b><h4 style="font-size: 14px;">Repairing</h4></b></td></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">
+
+        </mat-icon>
+      </button>
+      <span><img src="{{'http://localhost:3000/images/product/logo13.png'}}" style="height:53px; width:140px; " ></span>
+      <button mat-raised-button color="accent" style="margin-left: 10px;" (click)="onOffer()">OFFER</button>
+      <button mat-raised-button color="accent" style="margin-left: 40px;" (click)="onCart()">My Cart</button>
+      <div class="topnav"><input type="text" placeholder="Search.." style="margin-left: 600px; margin-top: -00px;" >
+      <button type="submit" style="color: black; height: 44.5px; background-color: white;" ><i class="fa fa-search"></i></button>
+    </div>
+
+    <span><img src="{{'http://localhost:3000/images/product/viewprofile.jpg'}}" height="30px" width="40px"></span>
+
+      <button mat-raised-button color="accent" style="margin-left: 10px;" (click)="onclick()">LOGOUT</button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+
+
+
+ 	<!-- HEADER -->
+
+    <header>
+
+    <div id="top-header">
+        <div class="container">
+          <div class="pull-left">
+            <span>Welcome to E-shop!</span>
+          </div>
+          <div class="pull-right">
+            <ul class="header-top-links">
+              <li><a href="#">Store</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li class="dropdown default-dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="#">English (ENG)</a></li>
+                  <li><a href="#">Russian (Ru)</a></li>
+                  <li><a href="#">French (FR)</a></li>
+                  <li><a href="#">Spanish (Es)</a></li>
+                </ul>
+              </li>
+              <li class="dropdown default-dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
+                <ul class="custom-menu">
+                  <li><a href="#">USD ($)</a></li>
+                  <li><a href="#">EUR (€)</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="header">
+        <div class="container">
+          <div class="pull-left">
+
+            <div class="header-logo">
+              <a class="logo" href="#">
+
+                <img src="http://localhost:3000/images/product/logo.png" alt="" >
+
+              </a>
+            </div>
+
+            <div class="header-search">
+              <form>
+                <input class="input search-input" type="text" placeholder="Enter your keyword" (keydown)="applyFilter($event.target.value)">
+                <select class="input search-categories">
+                  <option value="0">All Categories</option>
+                  <option value="1">Category 01</option>
+                  <option value="1">Category 02</option>
+                </select>
+                <button class="search-btn" ><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+
+          </div>
+          <div class="pull-right">
+            <ul class="header-btns">
+
+              <li class="header-account dropdown default-dropdown">
+                <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                  <div class="header-btns-icon">
+                    <i class="fa fa-user-o"></i>
+                  </div>
+                  <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
+                </div>
+                <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                <ul class="custom-menu">
+                  <li><a routerLink="/usermenu/viewprofile"><i class="fa fa-user-o"></i> My Account</a></li>
+                  <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                  <li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
+                  <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                  <li><a (click)="onlogout()"><i class="fa fa-unlock-alt"></i> Login</a></li>
+                  <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+                </ul>
+              </li>
+
+              <li class="header-cart dropdown default-dropdown"  >
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                  <div class="header-btns-icon" (click)="onAdd()">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="qty">{{cnt}}</span>
+                  </div>
+                  <strong class="text-uppercase" >My Cart:</strong>
+                  <br>
+                  <span>{{total}}</span>
+                </a>
+                <div class="custom-menu" >
+                  <div id="shopping-cart"  >
+                    <div class="shopping-cart-list">
+                      <div class="product product-widget" *ngFor="let item of cartpro_arr,let i=index"  >
+                        <div class="product-thumb"  >
+                            <img src="{{'http://localhost:3000/images/product/'+item.pro_img}}" alt="" height="30px" width="30px">
+                          </div>
+                        <div class="product-body">
+                          <h3 class="product-price">{{item.pro_price}} <span class="qty">x1</span></h3>
+                          <h2 class="product-name"><a href="#">{{item.pro_name}}</a></h2>
+                        </div>
+                        <button class="cancel-btn" (click)="ondelete(item,i)"><i class="fa fa-trash"></i></button>
+                      </div>
+
+                    </div>
+                    <div class="shopping-cart-btns">
+                      <button class="main-btn"(click)="onviewcart()">View Cart</button>
+                      <button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-toggle">
+                <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+
+
+    <div id="navigation"  >
+
+      <div class="container"  >
+          <div id="responsive-nav"  >
+
+            <div class="category-nav" style="margin-left: -100px;" >
+
+              <span class="category-header" (click)="onAdd()">Categories<i class="fa fa-list" ></i></span>
+              <ul class="category-list" *ngIf="flag" >
+
+                <li *ngFor="let item of cat_arr" ><a  (click)="onclick(item)">{{item.cat_name}}</a></li>
+              </ul>
+            </div>
+
+            <div class="menu-nav">
+                <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+                <ul class="menu-list">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Shop</a></li>
+                  <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women <i class="fa fa-caret-down"></i></a>
+                    <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Men <i class="fa fa-caret-down"></i></a>
+
+                    <li><a href="#">Sales</a></li>
+                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
+
+                      <ul class="custom-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="product-page.html">Product Details</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+
+                  </ul>
+                </ul>
+                  </div>
+
+                </div>
+        </div>
+        <div id="home">
+
+          <div class="container">
+
+            <div class="home-wrap">
+
+              <div id="home-slick">
+
+                <div class="banner banner-1">
+
+                </div>
+
+       </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

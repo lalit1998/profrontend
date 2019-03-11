@@ -1,0 +1,208 @@
+<!-- <div style="height: 300%; width: 60%; border: 2px solid black; margin-left: 200px;">
+  <h1>Order details</h1>
+  <table border-radius="3px" style="height: 30px; width: 418px; color: blue; font-size:20px;">
+    <th>Image</th>
+    <th>name</th>
+    <th>price</th>
+    <th>Qty</th>
+    <th>total</th>
+    &nbsp;
+    <th>remark</th>
+    <th>Delete</th>
+    <tr *ngFor="let item of cartpro_arr,let i=index">
+        <td><img src="{{'http://localhost:3000/images/product/'+item.pro_img}}" alt="no image" height="50px" width="50px"></td>
+      <td>{{item.pro_name}}</td>
+      <td>{{item.pro_price}}</td>
+      <td>
+        <select [(ngModel)]="qty[i]" (change)="onchange(item,i)">
+        <option *ngFor="let item of noarr">
+          {{item}}
+        </option>
+      </select>
+      </td>
+      <td></td>
+      <td>{{tot[i]}}</td>
+      <td>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true" (click)="ondelete(item,i)"></span>
+      </td><hr>
+    </tr>
+    <tr>
+      <td>{{total}}</td>
+    </tr>
+  </table>
+  <button *ngIf="cartpro_arr.length>0" (click)="oncheck()" class="btn btn-primary">CheckOut</button>
+</div> -->
+
+
+
+<!-- <h3>Add To Cart</h3>
+<div><img src="{{'http://localhost:3000/images/product/vivov5cover.jpg'}}" height="200px" width="250px" style="margin-left:35%;"><td >
+</div>
+<form   style="margin-left:20%;">
+    <div >
+
+        <mat-form-field class="example-full-width">
+
+      <input matInput placeholder="Product Name" name="pro_name" [(ngModel)]="pro_name" id="pro_name" required #proname="ngModel" >
+        </mat-form-field>
+      <div [hidden]="proname ||  proname">
+        <div [hidden]="!proname?.errors?.required"></div>
+        <mat-error>Product Name is required</mat-error>
+      </div>
+    </div>
+    <div >
+      <mat-form-field class="example-full-width">
+
+        <input matInput placeholder="Product Price" name="pro_price" [(ngModel)]="pro_price" id="pro_price" required #proprice="ngModel" >
+      </mat-form-field>
+    <div [hidden]="proprice ||  proprice">
+      <div [hidden]="!proprice?.errors?.required"></div>
+      <mat-error>User Name is required</mat-error>
+    </div>
+  </div> -->
+  <!-- <div>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" type="password" name="password" [(ngModel)]="password" id="password"
+          required #pass="ngModel" disabled="true">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+<div [hidden]="pass.valid ||  pass.untouched">
+      <div [hidden]="!pass?.errors?.required"></div>
+      <mat-error>Password is required</mat-error>
+    </div>
+  </div> -->
+
+    <!-- <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Address" name="address" [(ngModel)]="address" id="address" required #address1="ngModel" disabled="true">
+    </mat-form-field>
+    <div [hidden]="address1.valid ||  address1.untouched">
+      <div [hidden]="!address1?.errors?.required"></div>
+      <mat-error>address is required</mat-error>
+    </div>
+  </div>
+
+    <div>
+      <mat-form-field class="example-full-width">
+        <span matPrefix>+91 &nbsp;</span>
+        <input type="tel" matInput placeholder="Telephone" name="mobile_no" [(ngModel)]="mobile_no" id="mobile_no" required maxlength="10" minlength="10" #mobileno="ngModel" disabled="true">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+    <div [hidden]="mobileno.valid ||  mobileno.untouched">
+      <div [hidden]="!mobileno?.errors?.required"></div>
+      <mat-error>Mobile is required</mat-error>
+    </div>
+  </div>
+  <div>
+    <h5>Gender</h5>
+    <mat-radio-group class="example-radio-group" name="gender" [(ngModel)]="gender" required
+    id="gendder" #gender1="ngModel" disabled="true">
+      <mat-radio-button class="example-radio-button" *ngFor="let item of gender_arr" [value]="item" >
+
+        {{item}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>-->
+<!-- <div>
+<mat-form-field class="example-full-width">
+  <mat-select placeholder="Enter qty" [(ngModel)]="qty" name="qty" required
+  id="qty" #qty1="ngModel" >
+    <mat-option *ngFor="let item of qty_arr" [value]="item">{{item}}</mat-option>
+  </mat-select>
+  <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+</mat-form-field>
+<div [hidden]="qty1.valid ||  qty1.untouched">
+  <div [hidden]="!qty1?.errors?.required"></div>
+  <mat-error>Quantity is required</mat-error>
+</div>
+</div>
+ -->
+
+
+  <!-- </form> -->
+
+  <!-- <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-lg btn-primary form-control" (click)="onUpdateUser()">ADD</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-lg btn-danger form-control" (click)="flag=false">CANCEL</button>
+    </div> -->
+
+    <!-- <div style="margin-left:20%;"><button  mat-raised-button color="primary" (click)="onCheckout()">Checkout</button> -->
+    <!-- <button mat-raised-button color="warn" (click)="onclickcancel() ">Cancel</button> -->
+  <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+<div class="col-md-12" >
+  <div class="order-summary clearfix">
+    <div class="section-title">
+      <h3 class="title">Order Review</h3>
+    </div>
+    <table class="shopping-cart-table table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th></th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">Total</th>
+          <th class="text-right"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartpro_arr,let i=index">
+          <td class="thumb"><img src="{{'http://localhost:3000/images/product/'+item.pro_img}}" alt="no image" height="50px" width="50px"></td>
+          <td class="details">
+            <a href="#">{{item.pro_name}}</a>
+            <!-- <ul>
+              <li><span>Size: XL</span></li>
+              <li><span>Color: Camelot</span></li>
+            </ul> -->
+          </td>
+          <td class="price text-center"><strong>{{item.pro_price}}</strong>
+            <!-- <br><del class="font-weak"><small>$40.00</small></del></td> -->
+          <td class="qty text-center">
+            <!-- <input class="input" type="number" value="1">{{qty[i]}} -->
+            <select [(ngModel)]="qty[i]" (change)="onchange(item,i)">
+                <option *ngFor="let item of noarr">
+                  {{item}}
+                </option>
+              </select>
+          </td>
+          <td class="total text-center"><strong class="primary-color">{{tot[i]}}</strong></td>
+          <td class="text-right">
+              <!-- <button class="main-btn icon-btn"><i class="fa fa-close"> -->
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" (click)="ondelete(item,i)"></span>
+    <!-- </i></button> -->
+  </td>
+        </tr>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <th class="empty" colspan="3"></th>
+          <th>SUBTOTAL</th>
+          <th colspan="2" class="sub-total">{{total}}</th>
+        </tr>
+        <tr>
+          <th class="empty" colspan="3"></th>
+          <th>SHIPING</th>
+          <td colspan="2">Free Shipping</td>
+        </tr>
+        <tr>
+          <th class="empty" colspan="3"></th>
+          <th>TOTAL</th>
+          <th colspan="2" class="total">{{total}}</th>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="pull-right">
+      <button class="primary-btn" (click)="OnPlaceOrder()">Place Order</button>
+    </div>
+  </div>
+
+</div>
+
+
+
