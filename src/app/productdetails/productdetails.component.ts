@@ -11,6 +11,8 @@ import { ReviewService } from '../service/review.service';
 import { review } from '../classes/review';
 import { UserService } from '../service/user.service';
 import { CartService } from '../service/cart.service';
+import { WishService } from '../service/wish.service';
+import { wish } from '../classes/wish';
 export class checkcart{
   constructor(public user_id:number,public pro_id:number){}
 }
@@ -23,6 +25,7 @@ export class ProductdetailsComponent implements OnInit {
 
   pro_cat_arr:catpro[]=[];
   product_arr:product[]=[];
+  wish_arr:wish[]=[];
     pro_name:string="";
     pro_img:string="";
     pro_color:string="";
@@ -46,7 +49,7 @@ user_name1:string;
 fk_pro_id:number;
 email_id:string;
 review:string;
-  constructor(private _cartservice:CartService,private _user:UserService,private _cart:AddtocartService,private _review:ReviewService,private _acroute:ActivatedRoute,private _product:ProductserviceService,private _route:Router) { }
+  constructor(private _cartservice:CartService,private _user:UserService,private _cart:AddtocartService,private _review:ReviewService,private _acroute:ActivatedRoute,private _product:ProductserviceService,private _route:Router,private _wish:WishService) { }
 
   onclick(item){
     // console.log(item.pro_id);
@@ -84,6 +87,7 @@ review:string;
       }
       }
       onAddCart(item){
+
         this.user_id=parseInt(localStorage.getItem('user_id'));
     this._user.getUserById(this.user_id).subscribe(
       (data:any)=>{
@@ -217,6 +221,75 @@ this._review.getAllReview(this.pro_id).subscribe(
   }
 );
 }
+oncompare(pro_id){
+  console.log(this.pro_id);
+
+  this._route.navigate(['usermenu/compareproduct',this.pro_id]);
+   }
+   onCompare(item){
+    console.log(item.pro_id);
+
+    this._route.navigate(['usermenu/compareproduct',item.pro_id]);
+     }
+     onwishlist(item)
+  {
+    this.user_id=parseInt(localStorage.getItem('user_id'));
+    this._user.getUserById(this.user_id).subscribe(
+      (data:any)=>{
+        this.user_id=data[0].user_id;
+
+        this._wish.checkWish(new wish(item.pro_id,this.user_id)).subscribe(
+          (data:any)=>{
+            console.log(data);
+            if(data.length==1)
+            {
+              alert('already exist');
+            }
+            else{
+              this._wish.addWishList(new wish(item.pro_id,this.user_id)).subscribe(
+                (data:any)=>{
+                  console.log(data);
+                  this.wish_arr.push(new wish(item.pro_id,this.user_id));
+                  alert('item added into wishlist');
+                  console.log(this.wish_arr);
+                }
+              );
+            }
+          });
+        });
+
+  }
+  onWishlist(pro_id)
+  {
+    this.user_id=parseInt(localStorage.getItem('user_id'));
+    this._user.getUserById(this.user_id).subscribe(
+      (data:any)=>{
+        this.user_id=data[0].user_id;
+
+        this._wish.checkWish(new wish(this.pro_id,this.user_id)).subscribe(
+          (data:any)=>{
+            console.log(data);
+            if(data.length==1)
+            {
+              alert('already exist');
+            }
+            else{
+              this._wish.addWishList(new wish(this.pro_id,this.user_id)).subscribe(
+                (data:any)=>{
+                  console.log(data);
+                  this.wish_arr.push(new wish(this.pro_id,this.user_id));
+                  alert('item added into wishlist');
+                  console.log(this.wish_arr);
+                }
+              );
+            }
+          });
+        });
+  }
+  ondet(item)
+  {
+    this._route.navigate(['usermenu/prodetails',item.pro_id]);
+  }
   }
 
 

@@ -13,6 +13,7 @@ export class RepairService {
   private repairorderby:string="http://localhost:3000/repairorderby/";
   private repairorder:string="http://localhost:3000/repairorder/";
   private deleterepair:string="http://localhost:3000/deleteallrepair/";
+  private repairorderbyid:string="http://localhost:3000/repairorderbyid/";
   deleteRepairing(item:repairs)
   {
     let header1=new HttpHeaders().set('Content-type','application/json');
@@ -29,6 +30,9 @@ export class RepairService {
   }
   getAllRepairingByOrder() {
     return this._http.get(this.repairorderby);
+  }
+  getAllRepairingByOrderId(fk_user_id:number) {
+    return this._http.get(this.repairorderbyid+fk_user_id);
   }
   getAllRepairingOrder() {
     return this._http.get(this.repairorder);
@@ -49,7 +53,7 @@ export class RepairService {
   {
       let body=JSON.stringify(item);
       let head1=new HttpHeaders().set('Content-Type','application/json');
-    return this._http.post(this.addrepairing,body,{headers:head1});
+    return this._http.post(this.addrepair,body,{headers:head1});
   }
   UpdateRepairAmt(item)
   {

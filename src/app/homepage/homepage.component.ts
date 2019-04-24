@@ -79,7 +79,7 @@ OrderSource=new MatTableDataSource();
   }
   getAllTopOrder()
   {
-    this._order.getTopOrder().subscribe((data: order[]) => {
+    this._order.getTopOrder().subscribe((data: any) => {
       //this.order_arr = data;
       console.log(data);
       this.fk_user_id=data[0].fk_user_id;

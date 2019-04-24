@@ -11,6 +11,9 @@ export class OrderService {
   private orderdet:string="http://localhost:3000/orderdetail/";
   private todaysorder:string="http://localhost:3000/todaysorder/";
   private insertorder:string="http://localhost:3000/insertorder/";
+  private billbyuserid:string="http://localhost:3000/billbyuserid/";
+  private pastorder:string="http://localhost:3000/pastorder/";
+
 
   addOrder(item)
   {
@@ -30,6 +33,7 @@ export class OrderService {
   getTopOrder() {
     return this._http.get(this.toporder);
   }
+
   getTodaysOrder() {
     return this._http.get(this.todaysorder);
   }
@@ -60,5 +64,16 @@ export class OrderService {
 getOrderDetailsByfkoid(fk_order_id) {
   return this._http.get(this.orderdet+fk_order_id);
 }
+getPastOrderbyId(user_id:number)
+{
+  return this._http.get(this.billbyuserid+user_id);
+
+}
+getPastOrder(bill_id:number)
+{
+  return this._http.get(this.pastorder+bill_id);
+
+}
+
   constructor(private _http:HttpClient) { }
 }

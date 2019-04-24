@@ -1,14 +1,10 @@
 <div style="margin-left:100px;">
 <div class="row">
-    <!-- section title -->
     <div class="col-md-12">
       <div class="section-title">
         <h2 class="title">Picked For You</h2>
       </div>
     </div>
-    <!-- section title -->
-
-    <!-- Product Single -->
     <div class="col-md-3 col-sm-6 col-xs-6" *ngFor="let item of displaypro_arr;let i=index">
       <div class="product product-single">
         <div class="product-thumb">
@@ -35,7 +31,7 @@
             <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
             <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
             <button class="primary-btn add-to-cart" (click)="ondet(item)"><i class="fa fa-shopping-cart" ></i> Detail</button>
-            <!-- <button class="primary-btn add-to-cart" (click)="ondet(item)"><i class="fa fa-shopping-cart" ></i> Detail</button> -->
+
           </div>
         </div>
       </div>

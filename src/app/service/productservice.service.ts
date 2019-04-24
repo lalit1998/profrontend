@@ -15,7 +15,7 @@ export class ProductserviceService {
   private prodbycatname:string="http://localhost:3000/productbycatname/";
   private displaypro:string="http://localhost:3000/displayproduct/";
   private changeqty:string="http://localhost:3000/changeqty/";
-
+  private topfiveSellProduct:string="http://localhost:3000/topfivesellproduct/";
   constructor(private _http:HttpClient) { }
   addProduct(item:FormData)
   {
@@ -24,7 +24,9 @@ export class ProductserviceService {
   getProductById(pro_id: number) {
     return this._http.get(this.productById + pro_id);
   }
-
+  getTopFiveSellProduct() {
+    return this._http.get(this.topfiveSellProduct);
+  }
    deleteProduct(item:product)
    {
     let header1=new HttpHeaders().set('Content-type','application/json');

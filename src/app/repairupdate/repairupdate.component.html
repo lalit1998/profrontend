@@ -41,11 +41,22 @@
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Enter the Amount" name="repair_amt" [(ngModel)]="repair_amt" id="repair_amt" required  #repairamt="ngModel">
             </mat-form-field>
-              <div [hidden]="modelno.valid ||  modelno.untouched">
-               <div [hidden]="!modelno?.errors?.required"></div>
+              <div [hidden]="repairamt.valid ||  repairamt.untouched">
+               <div [hidden]="!repairamt?.errors?.required"></div>
                  <mat-error>Model Name is required</mat-error>
               </div>
            </div>
+           <div>
+              <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="repair_date" [(ngModel)]="repair_date" id="repair_date" required  #repairdate="ngModel">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+                <div [hidden]="repairdate.valid ||  repairdate.untouched">
+                 <div [hidden]="!repairdate?.errors?.required"></div>
+                   <mat-error>Date is required</mat-error>
+                </div>
+             </div>
          <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary" (click)="onUpdateAmt()">Update</button>
          <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
 

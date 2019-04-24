@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { AddtocartService } from '../service/addtocart.service';
 import { Addcart } from '../classes/cart';
 import { ProductserviceService } from '../service/productservice.service';
@@ -26,12 +26,14 @@ cart_arr:Addcart[]=[];
 del_cart_arr:Addcart[]=[];
 cat_pro_arr:catpro[]=[];
 qty:number[]=[];
+
+qty1:number[];
 price:number[]=[];
 i:number;
 tot:number[]=[];
 type:string="offline";
 email_id:string;
-noarr:number[]=[1,2,3,4,5,6,7,8];
+noarr:number[]=[];
 product_arr:product[]=[];
 billdetails_arr:billdetail[]=[];
   pro_name:string="";
@@ -45,6 +47,11 @@ billdetails_arr:billdetail[]=[];
   fk_cat_id:number;
   cartpro_arr:cartpro[]=[];
   total:number=0;
+  j:number;
+  cnt:number=1;
+  k:number;
+  no_arr2:number[]=[];
+  pro_soh1:number;
   order_arr:order[]=[];
   order_detail_arr:orderdetail[]=[];
   constructor(private _order:OrderService,private _bill:BillService ,private _addcart:AddtocartService,private _product:ProductserviceService,private _cart:CartService) { }
@@ -52,6 +59,8 @@ billdetails_arr:billdetail[]=[];
 
   }
   onchange(item,i){
+    console.log(item);
+    console.log(i);
 this.total=0;
     this.tot[i]=item.pro_price*this.qty[i];
     for(let i=0;i<this.tot.length;i++)
@@ -118,10 +127,7 @@ this.total=0;
   );
    }
   ngOnInit() {
-    // for(this.i=1;this.i<=10;this.i++)
-    // {
-    //     this.noarr.push(this.i);
-    // }
+
       this.email_id=localStorage.getItem('email_id');
     this.user_id=parseInt(localStorage.getItem('user_id'));
   this._addcart.getAllCartByUser_id(this.user_id).subscribe(
@@ -131,6 +137,7 @@ this.total=0;
     console.log(this.cart_arr);
     for(this.i=0;this.i<=data.length;this.i++){
       this.qty.push(1);
+
     }
   }
 );
@@ -140,7 +147,7 @@ this._addcart.getAllCart().subscribe(
     this.cart_arr=data;
     //this.fk_user_id=data[0].fk_user_id;
     console.log(this.cart_arr);
-    console.log(this.fk_user_id);
+   // console.log(this.fk_user_id);
     this._cart.getAllCartByProid(this.user_id).subscribe(
       (data:cartpro[])=>{
         console.log(data);
@@ -151,13 +158,31 @@ this._addcart.getAllCart().subscribe(
         this.pro_soh=data[0].pro_soh;
 
         for(this.i=0;this.i<data.length;this.i++){
+          //this.noarr=[];
+          console.log('item length'+data.length);
             this.tot.push(data[this.i].pro_price);
            this.total+=data[this.i].pro_price;
-          }
+           this.pro_soh=data[this.i].pro_soh;
+           console.log(this.pro_soh);
+            //this.pro_soh1=this.pro_soh;
+            this.no_arr2.push(this.pro_soh);
+            console.log(this.no_arr2);
+
+          for(this.j=1;this.j<=this.pro_soh;this.j++)
+            {
+            this.noarr.push(this.j);
+            console.log(this.noarr);
+            }
+             console.log(this.noarr);
+//this.noarr.splice(1);
+
+         }
+
 
       }
+
     );
-  }
+     }
 );
 // this._product.getAllProduct().subscribe(
 

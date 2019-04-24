@@ -7,8 +7,9 @@ import { CategoryService } from '../service/category.service';
 import { UserService } from '../service/user.service';
 import { repairs } from '../classes/repair';
 import { repairorder } from '../classes/repair_order';
+import { FormControl } from '@angular/forms';
 export class UpdateAmt{
-  constructor(public id:number,public amt:number)
+  constructor(public id:number,public amt:number,public date:Date)
   {
 
   }
@@ -21,6 +22,7 @@ export class UpdateAmt{
 export class RepairupdateComponent implements OnInit {
   repair_id:number;
   fk_user_id:number;
+  repair_date:Date;
   fk_cat_id:number;
   order_date:Date;
   model_no:string;
@@ -32,18 +34,20 @@ export class RepairupdateComponent implements OnInit {
   user_arr:user[]=[];
   type:string="User";
   fk_repair_id:number;
+  startDate = new Date(Date.now());
   constructor(private _route:Router,private _repair:RepairService,private _acroute:ActivatedRoute,private _category:CategoryService,private _user:UserService) { }
   addform(){}
   onUpdateAmt(){
-    this._repair.UpdateRepairAmt(new UpdateAmt(this.repair_id,this.repair_amt)).subscribe(
+    this._repair.UpdateRepairAmt(new UpdateAmt(this.repair_id,this.repair_amt,this.repair_date)).subscribe(
       (data:any)=>{
-
+        console.log(this.repair_date);
+        console.log(this.repair_amt)
         console.log(data);
         alert("Updated succesfully");
         this._repair.getAllRepairingByOrder().subscribe(
           (data:any)=>{
-            this.fk_repair_id=data[0].fk_repair_id;
-            this._repair.InsertRepairOrder(new repairorder(this.repair_amt,this.order_date,this.fk_repair_id)).subscribe(
+            //this.fk_repair_id=data[0].fk_repair_id;
+            this._repair.InsertRepairOrder(new repairorder(this.repair_amt,this.repair_id)).subscribe(
               (data:any)=>{
                 console.log(this.fk_repair_id);
                 this._route.navigate(['menu/repairorder']);

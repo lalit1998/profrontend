@@ -38,6 +38,11 @@ import { DisplayproductComponent } from './displayproduct/displayproduct.compone
 import { CompareproductComponent } from './compareproduct/compareproduct.component';
 import { UserAuthguardService } from './user-authguard.service';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { PastorderComponent } from './pastorder/pastorder.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { ChatComponent } from './chat/chat.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 const arr:Routes=[
@@ -76,10 +81,15 @@ const arr:Routes=[
     {path:'edituser',component:EdituserprofileComponent,canActivate:[UserAuthguardService]},
     {path:'myrepairing',component:MyrepairingComponent,canActivate:[UserAuthguardService]},
     {path:'changepass',component:ChangepassComponent,canActivate:[UserAuthguardService]},
-    {path:'repairform',component:RepairformComponent},
+    {path:'repairform',component:AddrepairComponent},
     {path:'displayproduct/:cat_id',component:DisplayproductComponent},
     {path:'compareproduct/:pro_id',component:CompareproductComponent},
-    ]},
+    {path:'wishlist',component:WishlistComponent,canActivate:[UserAuthguardService]},
+    {path:'pastorder',component:PastorderComponent,canActivate:[UserAuthguardService]},
+    {path:'contactus',component:ContactusComponent},
+    {path:'aboutus',component:AboutusComponent},
+    {path:'chat',component:ChatComponent}
+  ]},
     {path:'errorpage',component:ErrorpageComponent},
     {path:'**',redirectTo:'errorpage',pathMatch:'full'}
 

@@ -77,22 +77,7 @@
   <mat-error>city is required</mat-error>
 </div>
 </div>
-
-
-
   </form>
-
-  <!-- <div class="row">
-    <div class="col-md-6">
-      <button class="btn btn-lg btn-primary form-control" (click)="onUpdateUser()">ADD</button>
-    </div>
-    <div class="col-md-6">
-      <button class="btn btn-lg btn-danger form-control" (click)="flag=false">CANCEL</button>
-    </div> -->
-
     <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary" (click)="onUpdateUser()">Add</button>
     <button mat-raised-button color="warn" (click)="flag=false">Cancel</button>
-
   </div>
-<!-- </div> -->
-

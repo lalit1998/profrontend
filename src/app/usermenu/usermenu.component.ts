@@ -25,6 +25,7 @@ import { MatTableDataSource } from '@angular/material';
 export class UsermenuComponent implements OnInit {
   cat_arr:category[]=[];
 flag:boolean=true;
+flag1:boolean=true;
 email_id:string="";
 pro_arr:product[]=[];
 pro_arr1:product[]=[];
@@ -55,15 +56,15 @@ displaypro_arr:product[]=[];
 cat_id:number;
 email:string="";
 user_id1:number;
-sp:string;
+product_list:any[]=[];
 UserSource = new MatTableDataSource();
-
+product_dataSource=new MatTableDataSource();
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
   constructor(private _displayproduct:ProductserviceService,private _acroute:ActivatedRoute,private _addcart:AddtocartService,private _cart:CartService,private _category:CategoryService,private breakpointObserver: BreakpointObserver,private _route:Router) { }
-  onlogout()
+    onlogout()
   {
     localStorage.clear();
     //console.log(this.email);
@@ -72,6 +73,7 @@ UserSource = new MatTableDataSource();
     this.ngOnInit();
 
   }
+
   onclick(item)
   {
     this._route.navigate(['usermenu/displayproduct',item.cat_id]);
@@ -91,8 +93,16 @@ UserSource = new MatTableDataSource();
 
   }
   applyFilter(filterValue: string) {
-    this.sp= filterValue.trim().toLowerCase();
+    this.flag1=false;
     console.log(filterValue);
+    this.product_dataSource.filter= filterValue.trim().toLowerCase();
+    console.log(this.product_dataSource.filteredData);
+    this.product_list=this.product_dataSource.filteredData;
+    console.log(this.product_list);
+    if(this.product_dataSource.filter.length==0){
+      this.product_list=[];
+    }
+
   }
  onAdd()
   {
@@ -121,7 +131,23 @@ UserSource = new MatTableDataSource();
   //   this._route.navigate(['usermenu/userhome']);
   // }
   // onclickmenu(){}
+  itemsearch(item)
+  {
+    this.flag1=true;
+    console.log(item);
+    //this.Prod_list=[];
+    window.location.href="prodetails/"+item.pro_id;
+
+
+  }
    ngOnInit() {
+    this._displayproduct.getAllProduct().subscribe(
+      (data:any)=>{
+          this.pro_arr=data;
+          console.log(this.pro_arr);
+          this.product_dataSource.data=data;
+          console.log(this.product_dataSource.data);
+      });
     this.email_id=localStorage.getItem('email_id');
     console.log(this.email_id);
     this.user_id=parseInt(localStorage.getItem('user_id'));
@@ -145,7 +171,7 @@ this._addcart.getAllCart().subscribe(
     this.cart_arr=data;
     //this.fk_user_id=data[0].fk_user_id;
     console.log(this.cart_arr);
-    console.log(this.fk_user_id);
+   // console.log(this.fk_user_id);
     this._cart.getAllCartCountByid(this.user_id).subscribe(
       (data:any)=>{
         this.cnt=data[0].TOTAL;
@@ -217,4 +243,6 @@ this._category.getAllCategory().subscribe((data: category[]) => {
   }
 
 }
+
+
 

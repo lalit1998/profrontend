@@ -50,8 +50,8 @@ export class RepairComponent implements OnInit {
         (data:repairorder[])=>{
           // console.log(this.pro_soh);
           // console.log(this.pro_color);
-          this.repair_order_arr.push(new repairorder(this.repair_order_amt,this.repair_order_date,this.fk_repair_id));
-          this.repair_order_arr.push(new repairorder(this.repair_order_amt,this.repair_order_date,this.fk_repair_id));
+          this.repair_order_arr.push(new repairorder(this.repair_order_amt,this.fk_repair_id,this.repair_order_date));
+          this.repair_order_arr.push(new repairorder(this.repair_order_amt,this.fk_repair_id,this.repair_order_date));
          console.log(this.repair_order_arr);
          alert("added succesfully");
          this._route.navigate(['/repairorder']);

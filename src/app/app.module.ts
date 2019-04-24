@@ -8,7 +8,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatNativeDateModule,MatDatepickerModule,MatDatepickerToggle,MatDatepickerToggleIcon,MatButtonModule,MatCheckboxModule,MatProgressSpinnerModule,MatCardModule,MatSortModule,MatPaginatorModule,MatInputModule,MatTableModule,MatFormFieldModule,MatIconModule, MatSelect, MatOptionModule, MatSelectModule, MatToolbarModule, MatSidenavModule, MatListModule, MatGridListModule, MatMenuModule,MatRadioModule} from '@angular/material';
+import {MatNativeDateModule,MatDatepickerModule,MatDatepickerToggle,MatDialogModule,MatDatepickerToggleIcon,MatButtonModule,MatCheckboxModule,MatProgressSpinnerModule,MatCardModule,MatSortModule,MatPaginatorModule,MatInputModule,MatTableModule,MatFormFieldModule,MatIconModule, MatSelect, MatOptionModule, MatSelectModule, MatToolbarModule, MatSidenavModule, MatListModule, MatGridListModule, MatMenuModule,MatRadioModule} from '@angular/material';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { ProductComponent } from './product/product.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
@@ -50,7 +50,12 @@ import { CompareproductComponent } from './compareproduct/compareproduct.compone
 import {UserAuthguardService} from './user-authguard.service';
 import { UserService } from './service/user.service';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
-
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { PastorderComponent } from './pastorder/pastorder.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { DialogboxComponent } from './dialogbox/dialogbox.component';
+import { ChatComponent } from './chat/chat.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,8 +97,14 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
     DisplayproductComponent,
     CompareproductComponent,
     ErrorpageComponent,
-
+    WishlistComponent,
+    PastorderComponent,
+    ContactusComponent,
+    DialogboxComponent,
+    ChatComponent,
+    AboutusComponent,
     ],
+    entryComponents: [DialogboxComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -122,6 +133,7 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatDialogModule,
     ReactiveFormsModule
   ],
   providers: [UserService,UserAuthguardService],

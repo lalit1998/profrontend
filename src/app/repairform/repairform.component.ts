@@ -20,6 +20,8 @@ export class RepairformComponent implements OnInit {
   fk_user_id:number;
   email_id:string;
   user_id:number;
+  status:string="pending";
+  approve:string="approved";
   constructor(private _category:CategoryService,private _route:Router,private _repair:RepairService) { }
   addform(){}
   ngOnInit() {
@@ -33,7 +35,7 @@ export class RepairformComponent implements OnInit {
   }
   onaddrepair(){
       this._repair.AddRepair(new repairing(this.fk_user_id,this.fk_cat_id,this.model_no,this.prob_spe)).subscribe(
-      (data:repairing)=>{
+      (data:repairing[])=>{
       this.repair_arr.push(new repairing(this.fk_user_id,this.fk_cat_id,this.model_no,this.prob_spe));
       alert("rpairing request added successfully");
       console.log(data);
