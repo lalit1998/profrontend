@@ -18,7 +18,7 @@
                   <div class="product-label">
                       <span>New</span>
                     </div>
-        <button class="main-btn quick-view" ><i class="fa fa-search-plus"></i> Quick view</button>
+        <button class="main-btn quick-view" (click)="ondet(item)"><i class="fa fa-search-plus"></i> Quick view</button>
             <img src="{{'http://localhost:3000/images/product/'+item.pro_img}}" alt="" height="250px" width="250px">
           </div>
           <div class="product-body">
@@ -34,7 +34,7 @@
             <div class="product-btns">
               <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
               <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-              <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i>Add To Cart</button>
+              <button class="primary-btn add-to-cart" (click)="ondet(item)"><i class="fa fa-shopping-cart"></i>DETAIL</button>
             </div>
           </div>
         </div>

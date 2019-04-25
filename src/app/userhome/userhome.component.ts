@@ -54,6 +54,9 @@ wish_arr:wish[]=[];
 
   cat_arr:category[]=[];
   imageUrlArray:string[]=[
+    "../../assets/banner13.jpg",
+    "../../assets/m6.jpg",
+    "../../assets/m7.jpg",
     "../../assets/logo1.jpg",
     "../../assets/logo3.jpg"
   ];

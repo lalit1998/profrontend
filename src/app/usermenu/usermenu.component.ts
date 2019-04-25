@@ -136,7 +136,7 @@ product_dataSource=new MatTableDataSource();
     this.flag1=true;
     console.log(item);
     //this.Prod_list=[];
-    window.location.href="prodetails/"+item.pro_id;
+    window.location.href="/usermenu/prodetails/"+item.pro_id;
 
 
   }
